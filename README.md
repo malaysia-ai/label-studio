@@ -1,6 +1,12 @@
-## Label Studio for Malaysia AI
+# Label Studio for Malaysia AI
 
-- This repo is for Malaysia AI use to collect annotation
+This repo is for Malaysia AI use to collect annotation, https://label.malaysiaai.ml
+
+## how-to get access
+
+1. Contact husein.zol05@gmail.com or khursani8@gmail.com to get register link.
+
+<img alt="logo" width="40%" src="login.png">
 
 ## how-to deploy
 
