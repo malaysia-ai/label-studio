@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2100" height="1400">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2100" height="1400">
+
 <path d="M0 0h2100v1400H0z" fill="#cc0001"/>
 <path id="a" d="M0 1300h2100v100H0z" fill="#fff"/>
 <use transform="translate(0 -200)" width="2800" height="1400" xlink:href="#a"/>

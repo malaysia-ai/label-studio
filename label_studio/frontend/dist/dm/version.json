@@ -1,6 +1,6 @@
 {
-  "message": "Remove permissions field from Action model",
-  "commit": "e43c78af7d47d61912f98479ff9fc271b68d956e",
+  "message": "[fix] Selection logic",
+  "commit": "e1f6f01eea0bdbe35d370aa0894def5ebc0dcb2a",
   "branch": "master",
-  "date": "2021-08-27T12:22:53Z"
+  "date": "2021-09-17T17:05:28Z"
 }
