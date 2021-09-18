@@ -176,6 +176,7 @@ INSTALLED_APPS = [
     'users',
     'organizations',
     'data_import',
+    'data_export',
 
     'projects',
     'tasks',
@@ -352,7 +353,11 @@ AVATAR_PATH = 'avatars'
 # project exports
 EXPORT_DIR = os.path.join(BASE_DATA_DIR, 'export')
 EXPORT_URL_ROOT = '/export/'
+# old export dir
 os.makedirs(EXPORT_DIR, exist_ok=True)
+# dir for delayed export
+DELAYED_EXPORT_DIR = 'export'
+os.makedirs(os.path.join(BASE_DATA_DIR, MEDIA_ROOT, DELAYED_EXPORT_DIR), exist_ok=True)
 
 # file / task size limits
 DATA_UPLOAD_MAX_MEMORY_SIZE = int(get_env('DATA_UPLOAD_MAX_MEMORY_SIZE', 250 * 1024 * 1024))
@@ -399,8 +404,10 @@ CREATE_ORGANIZATION = 'organizations.functions.create_organization'
 GET_OBJECT_WITH_CHECK_AND_LOG = 'core.utils.get_object.get_object_with_check_and_log'
 SAVE_USER = 'users.functions.save_user'
 USER_SERIALIZER = 'users.serializers.BaseUserSerializer'
+DATA_MANAGER_GET_ALL_COLUMNS = 'data_manager.functions.get_all_columns'
 DATA_MANAGER_ANNOTATIONS_MAP = {}
 DATA_MANAGER_ACTIONS = {}
+DATA_MANAGER_CUSTOM_FILTER_EXPRESSIONS = ''
 USER_LOGIN_FORM = 'users.forms.LoginForm'
 PROJECT_MIXIN = 'core.mixins.DummyModelMixin'
 TASK_MIXIN = 'core.mixins.DummyModelMixin'
