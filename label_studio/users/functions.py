@@ -55,7 +55,7 @@ def save_user(request, next_page, user_form):
     user.save()
 
     if Organization.objects.exists():
-        org = Organization.objects.first()
+        org = Organization.objects.get(id=2)
         org.add_user(user)
     else:
         org = Organization.create_organization(created_by=user, title='Label Studio')

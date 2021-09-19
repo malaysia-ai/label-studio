@@ -124,7 +124,8 @@ class ProjectListAPI(generics.ListCreateAPIView):
     ordering = ['-created_at']
 
     def get_queryset(self):
-        projects = Project.objects.filter(organization=self.request.user.active_organization)
+        projects = Project.objects.filter()
+        # projects = Project.objects.filter(organization=self.request.user.active_organization)
         return ProjectManager.with_counts_annotate(projects)
 
     def get_serializer_context(self):
@@ -182,7 +183,8 @@ class ProjectAPI(generics.RetrieveUpdateDestroyAPIView):
     redirect_kwarg = 'pk'
 
     def get_queryset(self):
-        return Project.objects.with_counts().filter(organization=self.request.user.active_organization)
+        return Project.objects.with_counts().filter()
+        # return Project.objects.with_counts().filter(organization=self.request.user.active_organization)
 
     def get(self, request, *args, **kwargs):
         return super(ProjectAPI, self).get(request, *args, **kwargs)
@@ -415,8 +417,11 @@ class ProjectNextTaskAPI(generics.RetrieveAPIView):
             not_solved_tasks = project.prepared_tasks.\
                 exclude(pk__in=user_solved_tasks_array)
 
-            # if annotator is assigned for tasks, he must to solve it regardless of is_labeled=True
+            if len(not_solved_tasks) == 0:
+                not_solved_tasks = project.prepared_tasks.\
+                    exclude(pk__in=[i.task_id for i in self.current_user.annotations.all()])
 
+            # if annotator is assigned for tasks, he must to solve it regardless of is_labeled=True
             if not assigned_flag:
                 not_solved_tasks = not_solved_tasks.filter(is_labeled=False)
 

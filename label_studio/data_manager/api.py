@@ -120,7 +120,8 @@ class ViewAPI(viewsets.ModelViewSet):
         return Response(status=204)
 
     def get_queryset(self):
-        return View.objects.filter(project__organization=self.request.user.active_organization)
+        return View.objects.filter()
+        # return View.objects.filter(project__organization=self.request.user.active_organization)
 
     @staticmethod
     def get_task_serializer_context(request, project):
@@ -284,6 +285,10 @@ class TaskAPI(APIView):
 
         serializer = self.get_serializer_class()(task, many=False, context=context)
         data = serializer.data
+        if request.user.active_organization_id == 2:
+            data["annotations"] = list(
+                filter(lambda x:int(x["created_username"].split(", ")[-1])==request.user.id
+                ,data["annotations"]))
         return Response(data)
 
 
