@@ -496,8 +496,6 @@ class Project(ProjectMixin, models.Model):
         return control_weights
 
     def save(self, *args, recalc=True, **kwargs):
-        if self.organization_id == 2:
-            return
         exists = True if self.pk else False
 
         if self.label_config and (self._label_config_has_changed() or not exists or not self.control_weights):

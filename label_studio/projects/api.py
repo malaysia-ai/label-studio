@@ -207,7 +207,8 @@ class ProjectAPI(generics.RetrieveUpdateDestroyAPIView):
             else:
                 if has_changes:
                     View.objects.filter(project=project).all().delete()
-
+        if request.user.active_organization.id == 2:
+            return
         return super(ProjectAPI, self).patch(request, *args, **kwargs)
 
     def perform_destroy(self, instance):
