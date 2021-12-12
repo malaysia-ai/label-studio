@@ -1,0 +1,18 @@
+# Systemd service file for label-studio daemon 
+
+[Unit]
+Description=label-studio daemon service for ubuntu user
+After=syslog.target network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+
+ExecStart=python3 /home/ubuntu/label-studio/label_studio/manage.py runserver 0.0.0.0:8001
+ExecReload=/bin/kill -HUP $MAINPID
+
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=default.target
