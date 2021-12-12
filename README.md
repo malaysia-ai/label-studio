@@ -14,25 +14,18 @@ This repo is for Malaysia AI use to collect annotation, https://label.malaysiaai
 
 ```bash
 # install miniconda
-pip install -e .
-python label_studio/manage.py migrate
-python label_studio/manage.py runserver
+pip3 install -e .
+python3 label_studio/manage.py migrate
+python3 label_studio/manage.py runserver
 ```
 
-2. Install PM2,
+2. Run as a service,
 
 ```bash
-sudo apt install npm -y
-sudo npm install pm2 -g
-```
-
-3. Run as daemon using PM2,
-
-```bash
-pm2 start "/home/ubuntu/miniconda3/envs/label/bin/python3.8 /home/ubuntu/label-studio/label_studio/manage.py runserver"
-pm2 startup
-sudo env PATH=$PATH:/usr/bin /usr/local/lib/node_modules/pm2/bin/pm2 startup systemd -u ubuntu --hp /home/ubuntu
-pm2 save
+sudo cp label-studio.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable label-studio.service 
+sudo systemctl start label-studio.service
 ```
 
 ## Citation
