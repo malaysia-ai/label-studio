@@ -7,8 +7,13 @@ After=syslog.target network.target
 [Service]
 User=ubuntu
 Group=ubuntu
+Environment="POSTGRE_NAME=postgres"
+Environment="POSTGRE_USER=postgres"
+Environment="POSTGRE_PASSWORD=postgres"
+Environment="POSTGRE_PORT=5432"
+Environment="DJANGO_DB=default"
 
-ExecStart=POSTGRE_NAME=postgres POSTGRE_USER=postgres POSTGRE_PASSWORD=postgres POSTGRE_PORT=5432 DJANGO_DB=default /home/ubuntu/anaconda3/envs/label/bin/python /home/ubuntu/label-studio/label_studio/manage.py runserver 0.0.0.0:8001
+ExecStart=/home/ubuntu/anaconda3/envs/label/bin/python /home/ubuntu/label-studio/label_studio/manage.py runserver 0.0.0.0:8001
 ExecReload=/bin/kill -HUP $MAINPID
 
 KillMode=process
