@@ -12,8 +12,9 @@ Environment="POSTGRE_USER=postgres"
 Environment="POSTGRE_PASSWORD=postgres"
 Environment="POSTGRE_PORT=5432"
 Environment="DJANGO_DB=default"
+Environment="LABEL_STUDIO_DISABLE_SIGNUP_WITHOUT_LINK=true"
 
-ExecStart=/home/ubuntu/anaconda3/envs/label/bin/python /home/ubuntu/label-studio/label_studio/manage.py runserver 0.0.0.0:8001
+ExecStart=/home/ubuntu/.local/bin/label-studio start --username admin@admin.com --password admin --port 8001
 ExecReload=/bin/kill -HUP $MAINPID
 
 KillMode=process
