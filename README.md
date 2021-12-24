@@ -4,19 +4,16 @@ This repo is for Malaysia AI use to collect annotation, https://label.malaysiaai
 
 ## how-to get access
 
-1. Contact husein.zol05@gmail.com or khursani8@gmail.com to get register link.
+<img alt="logo" width="40%" src="login-original.png">
 
-<img alt="logo" width="40%" src="login.png">
+https://label.malaysiaai.ml protected by Github Auth, after that, simply login using `admin@admin.com` and `admin`.
 
 ## how-to deploy
 
 1. Install local development,
 
 ```bash
-# install miniconda
-pip3 install -e .
-python3 label_studio/manage.py migrate
-python3 label_studio/manage.py runserver
+pip3 install label-studio
 ```
 
 2. Run as a service,
