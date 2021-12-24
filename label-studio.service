@@ -13,6 +13,7 @@ Environment="POSTGRE_PASSWORD=postgres"
 Environment="POSTGRE_PORT=5432"
 Environment="DJANGO_DB=default"
 Environment="LABEL_STUDIO_DISABLE_SIGNUP_WITHOUT_LINK=true"
+Environment="LOCAL_FILES_SERVING_ENABLED=true"
 
 ExecStart=/home/ubuntu/.local/bin/label-studio start --username admin@admin.com --password admin --port 8001
 ExecReload=/bin/kill -HUP $MAINPID
