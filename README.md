@@ -8,6 +8,8 @@ This repo is for Malaysia AI use to collect annotation, https://label.malaysiaai
 
 https://label.malaysiaai.ml protected by Github Auth, after that, simply login using `admin@admin.com` and `admin`.
 
+Or you can create your own label studio account at https://label.malaysiaai.ml/user/signup/?token=d7f88c5fcf0e1ab4
+
 ## how-to deploy
 
 1. Install local development,
